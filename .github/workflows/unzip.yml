@@ -1,0 +1,22 @@
+name: Unzip Archive
+on:
+  push:
+    paths:
+      - '**.zip' # Сработает при загрузке любого .zip
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract zip
+        run: |
+          unzip myfile.zip -d ./extracted_files  # Замените myfile.zip на имя вашего файла
+          rm myfile.zip
+      - name: Commit files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Автоматическая распаковка архива"
+          git push
+          
