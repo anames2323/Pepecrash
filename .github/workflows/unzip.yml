@@ -11,7 +11,7 @@ jobs:
       - name: Extract zip
         run: |
           unzip myfile.zip -d ./extracted_files  # Замените myfile.zip на имя вашего файла
-          rm myfile.zip
+          rm bot.zip
       - name: Commit files
         run: |
           git config user.name "github-actions"
